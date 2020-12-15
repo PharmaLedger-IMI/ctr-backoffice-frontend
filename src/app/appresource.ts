@@ -6,7 +6,7 @@ export interface AppResource {
 
     key: string;
 
-    locale: Locale;
+    locale?: Locale;
 
     value: string;
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppResource } from '../appresource';
+import { APPRESOURCES } from '../mock-appresource';
 
 @Component({
   selector: 'app-appresource',
@@ -14,7 +15,9 @@ export class AppresourceComponent implements OnInit {
       locale: { code: "en" },
       value: 'value',
       help: 'help'
-  }
+  };
+
+  arcCollection = APPRESOURCES;
 
   constructor() { }
 
