@@ -1,0 +1,10 @@
+<h2>ID {{arc.id}}</h2>
+<div><span>key: </span>{{arc.key}}</div>
+<div><span>locale: </span>{{arc.locale.code}}</div>
+<div><span>original value: </span>{{arc.value}}</div>
+<div>
+  <label>value:
+    <input [(ngModel)]="arc.value" placeholder="value"/>
+  </label>
+</div>
+<div><span>help: </span>{{arc.help}}</div>

@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "clinicaltrials-frontend"
+  "defaultProject": "clinicaltrials-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
