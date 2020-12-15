@@ -1,5 +1,7 @@
 # ClinicaltrialsFrontend
 
+Web Site for ClinicalTrials - include wallet download and backoffice web management application
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
 ## Development server
