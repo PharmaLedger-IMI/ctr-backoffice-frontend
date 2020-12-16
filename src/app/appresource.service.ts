@@ -20,7 +20,7 @@ export class AppResourceService {
 
   getAppResource(id: number): Observable<AppResource | undefined> {
       // TODO: send the message _after_ fetching the hero
-      this.messageService.add(`AppResourceService: fetched hero id=${id}`);
+      this.messageService.add(`AppResourceService: fetched arc.id=${id}`);
       return of(APPRESOURCES.find(arc => arc.id === id));
   }
 }
