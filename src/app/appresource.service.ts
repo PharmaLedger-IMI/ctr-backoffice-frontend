@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { AppResource } from './appresource';
 import { APPRESOURCES } from './mock-appresource';
@@ -10,7 +11,7 @@ export class AppResourceService {
 
   constructor() { }
 
-  getAppResources(): AppResource[] {
-      return APPRESOURCES;
+  getAppResources(): Observable<AppResource[]> {
+      return of(APPRESOURCES);
   }
 }

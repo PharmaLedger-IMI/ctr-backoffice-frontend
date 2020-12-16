@@ -35,6 +35,7 @@ export class AppResourceComponent implements OnInit {
   }
 
   getAppResources(): void {
-      this.arcCollection = this.arcService.getAppResources();
+      this.arcService.getAppResources()
+          .subscribe(arcArray => this.arcCollection = arcArray);
   }
 }
