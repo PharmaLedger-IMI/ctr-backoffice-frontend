@@ -1,16 +1,18 @@
 <h2>List of AppResource</h2>
-<ul>
-  <li *ngFor="let arc of arcCollection">
+<ul class="appresource">
+  <li *ngFor="let arc of arcCollection" (click)="onSelect(arc)" [class.selected]="arc === arcSelected">
     <span>{{arc.id}}</span> {{arc.key}} {{arc.locale?.code || 'null'}}  {{arc.value}}
   </li>
 </ul>
-<h2>AppResource.ID {{arc.id}}</h2>
-<div><span>key: </span>{{arc.key}}</div>
-<div><span>locale: </span>{{arc.locale?.code}}</div>
-<div><span>original value: </span>{{arc.value}}</div>
+<div *ngIf="arcSelected">
+<h2>AppResource.ID {{arcSelected.id}} Details</h2>
+<div><span>key: </span>{{arcSelected.key}}</div>
+<div><span>locale: </span>{{arcSelected.locale?.code}}</div>
+<div><span>original value: </span>{{arcSelected.value}}</div>
 <div>
   <label>value:
-    <input [(ngModel)]="arc.value" placeholder="value"/>
+    <input [(ngModel)]="arcSelected.value" placeholder="value"/>
   </label>
 </div>
-<div><span>help: </span>{{arc.help}}</div>
+<div><span>help: </span>{{arcSelected.help}}</div>
+</div>
