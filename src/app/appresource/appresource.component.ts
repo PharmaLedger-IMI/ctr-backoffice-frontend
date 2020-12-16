@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppResource } from '../appresource';
+import { AppResourceService } from '../appresource.service';
 import { APPRESOURCES } from '../mock-appresource';
 
 @Component({
@@ -21,9 +22,11 @@ export class AppResourceComponent implements OnInit {
 
   arcSelected?: AppResource; // needed ? to indicate optional !???
 
-  constructor() { }
+  //constructor() { }
+  constructor(private arcService: AppResourceService) {}
 
   ngOnInit(): void {
+      this.getAppResources();
   }
 
   onSelect(arc: AppResource): void {
@@ -31,4 +34,7 @@ export class AppResourceComponent implements OnInit {
       console.log("Selected Arc.id=", this.arcSelected.id);
   }
 
+  getAppResources(): void {
+      this.arcCollection = this.arcService.getAppResources();
+  }
 }
