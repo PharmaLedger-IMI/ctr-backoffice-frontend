@@ -4,15 +4,4 @@
     <span>{{arc.id}}</span> {{arc.key}} {{arc.locale?.code || 'null'}}  {{arc.value}}
   </li>
 </ul>
-<div *ngIf="arcSelected">
-<h2>AppResource.ID {{arcSelected.id}} Details</h2>
-<div><span>key: </span>{{arcSelected.key}}</div>
-<div><span>locale: </span>{{arcSelected.locale?.code}}</div>
-<div><span>original value: </span>{{arcSelected.value}}</div>
-<div>
-  <label>value:
-    <input [(ngModel)]="arcSelected.value" placeholder="value"/>
-  </label>
-</div>
-<div><span>help: </span>{{arcSelected.help}}</div>
-</div>
+<app-appresource-detail [arc]="arcSelected"></app-appresource-detail>
