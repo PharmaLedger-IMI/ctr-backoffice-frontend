@@ -21,18 +21,11 @@ export class AppResourceComponent implements OnInit {
 
   arcCollection: AppResource[] = []; /* collection of all AppResources */
 
-  arcSelected?: AppResource; // needed ? to indicate optional !???
-
   //constructor() { }
   constructor(private arcService: AppResourceService) {}
 
   ngOnInit(): void {
       this.getAppResources();
-  }
-
-  onSelect(arc: AppResource): void {
-      this.arcSelected = arc;
-      console.log("Selected Arc.id=", this.arcSelected.id);
   }
 
   getAppResources(): void {

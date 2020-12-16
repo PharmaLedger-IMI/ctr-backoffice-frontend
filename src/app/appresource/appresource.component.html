@@ -1,7 +1,8 @@
 <h2>List of AppResource</h2>
 <ul class="appresource">
-  <li *ngFor="let arc of arcCollection" (click)="onSelect(arc)" [class.selected]="arc === arcSelected">
-    <span>{{arc.id}}</span> {{arc.key}} {{arc.locale?.code || 'null'}}  {{arc.value}}
+  <li *ngFor="let arc of arcCollection">
+    <a routerLink="/appresource/{{arc.id}}">
+      <span class="badge">{{arc.id}}</span> {{arc.key}} {{arc.locale?.code || 'null'}}  {{arc.value}}
+    </a>
   </li>
 </ul>
-<app-appresource-detail [arc]="arcSelected"></app-appresource-detail>

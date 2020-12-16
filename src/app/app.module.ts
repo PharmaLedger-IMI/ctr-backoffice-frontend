@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { AppResourceComponent } from './appresource/appresource.component';
 import { AppResourceDetailComponent } from './appresource-detail/appresource-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppResourceComponent,
     AppResourceDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
