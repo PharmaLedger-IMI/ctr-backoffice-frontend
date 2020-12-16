@@ -26,10 +26,16 @@ export class AppResourceDetailComponent implements OnInit {
 
   getAppResource(): void {
       const idStr = this.route.snapshot.paramMap.get('id');
-      if (!idStr) throw "id is null";
+      if (!idStr) throw "request id is null";
       const id = +idStr;
       this.arcService.getAppResource(id)
          .subscribe(arc => this.arc = arc);
+  }
+
+  save(): void {
+    if (!this.arc) throw "this.arc null";
+    this.arcService.update(this.arc)
+      .subscribe(() => this.goBack());
   }
 
   goBack(): void {

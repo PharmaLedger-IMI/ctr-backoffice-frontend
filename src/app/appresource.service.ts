@@ -11,6 +11,10 @@ import { APPRESOURCES } from './mock-appresource';
   providedIn: 'root'
 })
 export class AppResourceService {
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   private arcUrl = "http://localhost:3000/ctrial/appresource";
 
   constructor(
@@ -28,10 +32,20 @@ export class AppResourceService {
         );
   }
 
-  getAppResource(id: number): Observable<AppResource | undefined> {
-      // TODO: send the message _after_ fetching the hero
-      this.messageService.add(`AppResourceService: fetched arc.id=${id}`);
-      return of(APPRESOURCES.find(arc => arc.id === id));
+  getAppResource(id: number): Observable<AppResource> {
+      const url = `${this.arcUrl}/${id}`;
+      return this.http.get<AppResource>(url).pipe(
+          tap(_ => this.log(`fetched hero id=${id}`)),
+          catchError(this.handleError<AppResource>(`getAppResource id=${id}`))
+      );
+  }
+
+  /** PUT: update the hero on the server */
+  update(arc: AppResource): Observable<any> {
+      return this.http.put(this.arcUrl, arc, this.httpOptions).pipe(
+          tap(_ => this.log(`updated arc id=${arc.id}`)),
+          catchError(this.handleError<any>('update'))
+      );
   }
 
   /**
