@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AppResource } from '../appresource';
 import { AppResourceService } from '../appresource.service';
-import { APPRESOURCES } from '../mock-appresource';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-appresource',
@@ -18,7 +19,7 @@ export class AppResourceComponent implements OnInit {
       help: 'help'
   }; */ // not used anymore
 
-  arcCollection = APPRESOURCES; /* collection of all AppResources */
+  arcCollection: AppResource[] = []; /* collection of all AppResources */
 
   arcSelected?: AppResource; // needed ? to indicate optional !???
 
