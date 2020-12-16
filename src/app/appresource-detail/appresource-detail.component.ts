@@ -6,7 +6,7 @@ import { AppResource } from '../appresource';
   templateUrl: './appresource-detail.component.html',
   styleUrls: ['./appresource-detail.component.css']
 })
-export class AppresourceDetailComponent implements OnInit {
+export class AppResourceDetailComponent implements OnInit {
 
   @Input() arc?: AppResource;
 

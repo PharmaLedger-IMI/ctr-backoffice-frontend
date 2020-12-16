@@ -7,7 +7,7 @@ import { APPRESOURCES } from '../mock-appresource';
   templateUrl: './appresource.component.html',
   styleUrls: ['./appresource.component.css']
 })
-export class AppresourceComponent implements OnInit {
+export class AppResourceComponent implements OnInit {
 
   /* arc: AppResource = {
       id: 1,
