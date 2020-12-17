@@ -48,6 +48,14 @@ export class AppResourceService {
       );
   }
 
+  /** POST: add a new hero to the server */
+  add(arc: AppResource): Observable<AppResource> {
+    return this.http.post<AppResource>(this.arcUrl, arc, this.httpOptions).pipe(
+      tap((newArc: AppResource) => this.log(`added arc w/ id=${newArc.id}`)),
+      catchError(this.handleError<AppResource>('add'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

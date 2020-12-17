@@ -29,7 +29,12 @@ export class AppResourceComponent implements OnInit {
   }
 
   getAppResources(): void {
-      this.arcService.getAppResources()
-          .subscribe(arcArray => this.arcCollection = arcArray);
+    this.arcService.getAppResources()
+        .subscribe(arcArray => this.arcCollection = arcArray);
+  }
+
+  add(arcKey: string, arcValue: string, arcHelp: string): void {
+    this.arcService.add({ key: arcKey, value: arcValue, help: arcHelp } as AppResource)
+      .subscribe(arc => this.arcCollection.push(arc));
   }
 }
