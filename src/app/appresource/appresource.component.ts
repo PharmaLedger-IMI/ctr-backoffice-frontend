@@ -37,4 +37,9 @@ export class AppResourceComponent implements OnInit {
     this.arcService.add({ key: arcKey, value: arcValue, help: arcHelp } as AppResource)
       .subscribe(arc => this.arcCollection.push(arc));
   }
+
+  delete(arc: AppResource): void {
+    this.arcCollection = this.arcCollection.filter(arc2 => arc2 !== arc);
+    this.arcService.delete(arc).subscribe();
+  }
 }

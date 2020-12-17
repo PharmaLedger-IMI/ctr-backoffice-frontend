@@ -56,6 +56,17 @@ export class AppResourceService {
     );
   }
 
+  /** DELETE: delete the hero from the server */
+  delete(arc: AppResource | number): Observable<AppResource> {
+    const id = typeof arc === 'number' ? arc : arc.id;
+    const url = `${this.arcUrl}/${id}`;
+
+    return this.http.delete<AppResource>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted arc id=${id}`)),
+      catchError(this.handleError<AppResource>('delete'))
+    );
+  }
+  
   /**
    * Handle Http operation that failed.
    * Let the app continue.

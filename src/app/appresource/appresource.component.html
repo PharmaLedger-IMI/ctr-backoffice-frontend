@@ -19,5 +19,7 @@
     <a routerLink="/appresource/{{arc.id}}">
       <span class="badge">{{arc.id}}</span> {{arc.key}} {{arc.locale?.code || 'null'}}  {{arc.value}}
     </a>
-  </li>
+    <button class="delete" title="delete AppResource"
+    (click)="delete(arc)">x</button>
+</li>
 </ul>
