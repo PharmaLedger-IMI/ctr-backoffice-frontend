@@ -9,6 +9,7 @@ import { AppResourceComponent } from './appresource/appresource.component';
 import { AppResourceDetailComponent } from './appresource-detail/appresource-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppresourceSearchComponent } from './appresource-search/appresource-search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppResourceComponent,
     AppResourceDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    AppresourceSearchComponent
   ],
   imports: [
     HttpClientModule,

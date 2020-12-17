@@ -67,6 +67,20 @@ export class AppResourceService {
     );
   }
   
+  /* GET heroes whose name contains search term */
+  search(term: string): Observable<AppResource[]> {
+      if (!term.trim()) {
+          // if not search term, return empty hero array.
+          return of([]);
+      }
+      return this.http.get<AppResource[]>(`${this.arcUrl}/?term=${term}`).pipe(
+          tap(x => x.length ?
+              this.log(`found arc matching "${term}"`) :
+              this.log(`no arc matching "${term}"`)),
+          catchError(this.handleError<AppResource[]>('search', []))
+      );
+  }
+  
   /**
    * Handle Http operation that failed.
    * Let the app continue.
