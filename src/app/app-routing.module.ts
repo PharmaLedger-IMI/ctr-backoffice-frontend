@@ -11,8 +11,7 @@ const routes: Routes = [
   {path: 'appresources', component: AppResourceComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'locale/:code', component: LocaleComponent},
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
-];
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

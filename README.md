@@ -27,3 +27,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+# TODOs
+
+For internal discussion:
+
+* component naming convention ?
+  * tablename/Index (or List) -> tablename-list.component.*
+  * tablename/Info -> tablename-list.component.*
+  * tablename/Edit -> tablename-edit.component.*
+  * tablename/Delete -> tablename-delete.component.*
+
+* services by table, or one full service for DB ? Ex: appresource.service.ts vs ctrial.service.ts ? jpsl: One for table (for big DBs), but we need to centralize logging messages somehow...
+
+

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AppResource } from '../appresource';
 import { AppResourceService } from '../appresource.service';
-import { APPRESOURCES } from '../mock-appresource';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-appresource',
@@ -18,9 +19,7 @@ export class AppResourceComponent implements OnInit {
       help: 'help'
   }; */ // not used anymore
 
-  arcCollection = APPRESOURCES; /* collection of all AppResources */
-
-  arcSelected?: AppResource; // needed ? to indicate optional !???
+  arcCollection: AppResource[] = []; /* collection of all AppResources */
 
   //constructor() { }
   constructor(private arcService: AppResourceService) {}
@@ -29,12 +28,18 @@ export class AppResourceComponent implements OnInit {
       this.getAppResources();
   }
 
-  onSelect(arc: AppResource): void {
-      this.arcSelected = arc;
-      console.log("Selected Arc.id=", this.arcSelected.id);
+  getAppResources(): void {
+    this.arcService.getAppResources()
+        .subscribe(arcArray => this.arcCollection = arcArray);
   }
 
-  getAppResources(): void {
-      this.arcCollection = this.arcService.getAppResources();
+  add(arcKey: string, arcValue: string, arcHelp: string): void {
+    this.arcService.add({ key: arcKey, value: arcValue, help: arcHelp } as AppResource)
+      .subscribe(arc => this.arcCollection.push(arc));
+  }
+
+  delete(arc: AppResource): void {
+    this.arcCollection = this.arcCollection.filter(arc2 => arc2 !== arc);
+    this.arcService.delete(arc).subscribe();
   }
 }
