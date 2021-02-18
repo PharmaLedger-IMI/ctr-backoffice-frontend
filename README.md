@@ -1,6 +1,8 @@
-# ClinicaltrialsFrontend
+# ctr-backoffice-frontend
 
-Web Site for ClinicalTrials - include wallet download and backoffice web management application
+Main Web Site for ClinicalTrials - TODO decide if it includes the
+backoffice web management application only, or if it includes
+wallet download and backoffice web management application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
