@@ -23,7 +23,7 @@ export class AppResourceService {
 
   getAppResources(): Observable<AppResource[]> {
       // TODO: send the message _after_ fetching the heroes
-      this.messageService.add('AppResourceService: fetched arcCollection');
+      this.messageService.add('AppResourceService: fetching arcCollection');
       //return of(APPRESOURCES);
       return this.http.get<AppResource[]>(this.arcUrl)
         .pipe(

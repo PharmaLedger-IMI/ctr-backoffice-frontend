@@ -18,7 +18,7 @@ export class LocaleService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getLocales(): Observable<Locale[]>{
-    this.messageService.add('LocaleService: fetched locales');
+    this.messageService.add('LocaleService: fetching locales');
     return this.http.get<Locale[]>(this.localeEndpoint)
       .pipe(
         tap(_ => this.log('fetched heroes')),
