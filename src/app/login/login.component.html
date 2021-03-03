@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<div>
+    <label>Username:
+        <input #auUsername placeholder="Username" />
+    </label>
+</div>
+<div>
+    <label>Password:
+        <input #auPassword placeholder="Password" type="password" />
+    </label>
+</div>
+<button (click)="login(auUsername.value, auPassword.value); auPassword.value='';">Login</button>

@@ -5,13 +5,15 @@ import {AppResourceComponent} from './appresource/appresource.component';
 import {AppResourceDetailComponent} from './appresource-detail/appresource-detail.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LocaleComponent} from './locale/locale.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: 'locales', component: LocaleListComponent},
   {path: 'appresource', component: AppResourceComponent},
   {path: 'appresource/:id', component: AppResourceDetailComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'locale/:code', component: LocaleComponent},
+  {path: 'locales', component: LocaleListComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
 

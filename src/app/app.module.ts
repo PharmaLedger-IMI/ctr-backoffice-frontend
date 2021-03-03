@@ -13,6 +13,8 @@ import {LocaleListComponent} from './locale-list/locale-list.component';
 import {MessagesComponent} from './messages/messages.component';
 import {LocaleSearchComponent} from './locale-search/locale-search.component';
 import { AppresourceSearchComponent } from './appresource-search/appresource-search.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AppresourceSearchComponent } from './appresource-search/appresource-sea
     MessagesComponent,
     DashboardComponent,
     AppresourceSearchComponent,
-    LocaleSearchComponent
+    LocaleSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { AppresourceSearchComponent } from './appresource-search/appresource-sea
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
