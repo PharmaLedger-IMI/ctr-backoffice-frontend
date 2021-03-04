@@ -60,6 +60,10 @@ export class AuthService {
     return !this.isLoggedIn();
   }
 
+  public getToken() : string | undefined {
+    return this.getUser()?.token;
+  }
+
   public getUser() : User | undefined {
     if (this.isLoggedIn()) {
       return JSON.parse(sessionStorage.getItem(AuthService.CTR_USER)!);
