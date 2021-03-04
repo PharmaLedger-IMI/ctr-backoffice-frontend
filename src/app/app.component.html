@@ -1,6 +1,7 @@
-<h1>{{title}}</h1>
+<h1>{{title}} - {{authService.isLoggedIn() ? authService.getUsername() : 'Please login'}}</h1>
 <nav>
-  <a routerLink="/login">Login</a>
+  <a *ngIf="authService.isLoggedOut()" routerLink="/login">Login</a>
+  <a *ngIf="authService.isLoggedIn()" (click)="authService.logout()" routerLink="/login">Logout</a>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/locales">Locales</a>
   <a routerLink="/appresource">AppResource</a>

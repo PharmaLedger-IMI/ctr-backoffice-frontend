@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../user';
-import { AuthService } from '../auth/auth.service';
 import { MessageService } from '../message.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',

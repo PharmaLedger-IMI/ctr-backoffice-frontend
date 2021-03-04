@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import * as moment from "moment";
 import { MessageService } from '../message.service';
 import { Observable, of } from 'rxjs';
+import { User } from '../user';
 
 @Injectable()
 export class AuthService {
+
+  static readonly CTR_USER : string = "ctr_user";
 
   private authLoginUrl = "http://localhost:3000/auth/login";
 
@@ -27,6 +28,10 @@ export class AuthService {
     .subscribe(
       (res: any) => {
         this.log(`posted ${username},${password}, ${res}`);
+        if (!res.token || !res.username) {
+          callback("Missing username/token field in "+JSON.stringify(res), null);
+          return;
+        }
         this.setSession(res);
         callback(null, res);
       },
@@ -36,29 +41,35 @@ export class AuthService {
     );
   }
 
-  private setSession(authResult: { token: string; }): void {
-    localStorage.setItem('ctr_token', authResult.token);
-    //localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+  private setSession(authResult: any): void {
+    let user = new User();
+    user.username = authResult.username;
+    user.token = authResult.token;
+    sessionStorage.setItem(AuthService.CTR_USER, JSON.stringify(user));
   }
 
-  logout() {
-    localStorage.removeItem("ctr_token");
-    //localStorage.removeItem("expires_at");
+  public logout() {
+    sessionStorage.clear();
   }
 
-  public isLoggedIn() {
-    return false;
-    //return moment().isBefore(this.getExpiration());
+  public isLoggedIn() : boolean {
+    return !!sessionStorage.getItem(AuthService.CTR_USER);
   }
 
-  isLoggedOut() {
+  public isLoggedOut() : boolean {
     return !this.isLoggedIn();
   }
 
-  getExpiration() {
-    const expiration = localStorage.getItem("expires_at");
-    const expiresAt = JSON.parse(expiration!);
-    return moment(expiresAt);
+  public getUser() : User | undefined {
+    if (this.isLoggedIn()) {
+      return JSON.parse(sessionStorage.getItem(AuthService.CTR_USER)!);
+    } else {
+      return undefined;
+    }
+  }
+
+  public getUsername() : string | undefined {
+    return this.getUser()?.username;
   }
 
   /**
