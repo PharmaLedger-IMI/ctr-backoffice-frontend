@@ -1,12 +1,12 @@
 <h2>Login</h2>
 <div>
     <label>Username:
-        <input #auUsername placeholder="Username" />
+        <input [(ngModel)]="user.username" placeholder="username" />
     </label>
 </div>
 <div>
     <label>Password:
-        <input #auPassword placeholder="Password" type="password" />
+        <input [(ngModel)]="user.password" placeholder="password" type="password" />
     </label>
 </div>
-<button (click)="login(auUsername.value, auPassword.value); auPassword.value='';">Login</button>
+<button (click)="login();">Login</button>

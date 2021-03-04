@@ -21,7 +21,7 @@ export class AuthService {
    * @param password in clear text
    * @returns Observable<{ token: string }>
    */
-  login(username: string, password: string, callback: (err:any, data:any) => void) : void {
+  login(username: string, password: string|undefined, callback: (err:any, data:any) => void) : void {
     // backend /auth/login returns token
     this.http.post<{ token: string; }>(this.authLoginUrl, { username, password })
     .subscribe(

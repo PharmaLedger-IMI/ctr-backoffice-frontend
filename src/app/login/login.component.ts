@@ -1,8 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { User } from '../user';
 import { AuthService } from '../auth/auth.service';
 import { MessageService } from '../message.service';
 
@@ -13,35 +12,47 @@ import { MessageService } from '../message.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    private router : Router,
-    private authService : AuthService,
-    private messageService: MessageService
-  ) { }
+  @Input() user: User;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private messageService: MessageService
+  ) {
+    this.user = new User();
   }
 
-  login(auUsername : string, auPassword : string) {
+  ngOnInit(): void {
+    this.user = new User();
+  }
+
+  login() {
     let self = this;
-    this.messageService.add("Logging in \""+auUsername+"\"");
+    if (!self.user.username) {
+      self.log("Username cannot be empty!");
+      return;
+    }
+    let auUsername = self.user.username!;
+    let auPassword = self.user.password;
+    self.user.password = '';
+    this.messageService.add("Logging in \"" + auUsername + "\"");
     this.authService.login(auUsername, auPassword,
-      function(err, res) {
+      function (err, res) {
         if (err) {
-          self.log("Logged in \""+auUsername+"\" failed "+JSON.stringify(err));
+          self.log("Logged in \"" + auUsername + "\" failed " + JSON.stringify(err));
           if (err?.status == 401) { // HTTP status Unauthorized
             self.log("WRONG USER/PASS! TRY AGAIN!");
           } else {
             self.log("Weird error!");
           }
         } else {
-          self.log("Logged in "+auUsername+" res="+JSON.stringify(res));
+          self.log("Logged in " + auUsername + " res=" + JSON.stringify(res));
           self.router.navigate(['/dashboard']); // TODO navigate to proper profile entry page
         }
       }
     );
   }
-  
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -56,13 +67,13 @@ export class LoginComponent implements OnInit {
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
- 
+
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
   private log(message: string) {
-      this.messageService.add(`LoginComponent: ${message}`);
+    this.messageService.add(`LoginComponent: ${message}`);
   }
 }
