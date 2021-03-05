@@ -51,6 +51,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 For internal discussion:
 
+* form layout and display of form submition errors
+
+* FHIR forms support ? https://www.hl7.org/fhir/questionnaire.html ? Re-use parts of http://lhncbc.github.io/lforms/ ? ( https://confluence.hl7.org/display/FHIR/Open+Source+Implementations )
+
 * component naming convention ?
   * tablename/Index (or List) -> tablename-list.component.*
   * tablename/Info -> tablename-list.component.*
