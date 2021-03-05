@@ -6,6 +6,21 @@ wallet download and backoffice web management application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
+## Setup
+
+### Node and npm
+
+Major nodeJS version is 14. npm version was 6. (Latest stable versions).
+(This does not mean it does not work with higher versions. Just means that the developers are using these versions).
+
+### npm install
+
+```
+git clone https://github.com/PharmaLedger-IMI/ctr-backoffice-frontend
+cd ctr-backoffice-frontend
+npm install
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
